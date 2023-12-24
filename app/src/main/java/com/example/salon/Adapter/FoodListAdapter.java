@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 
+import com.example.salon.Activity.DetailActivity;
 import com.example.salon.Domain.Foods;
 import com.example.salon.R;
 
@@ -47,7 +48,11 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.viewho
                 .transform(new CenterCrop(), new RoundedCorners(30))
                 .into(holder.pic);
 
-
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent=new Intent(context, DetailActivity.class);
+            intent.putExtra("object",items.get(position));
+            context.startActivity(intent);
+        });
     }
 
     @Override

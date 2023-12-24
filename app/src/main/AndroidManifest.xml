@@ -43,8 +43,6 @@
         <activity android:name=".Booking.booking_confirm"
             android:exported="false">
         </activity>
-
-
         <activity
             android:name=".Booking.Booking_sel_locale"
             android:exported="false">

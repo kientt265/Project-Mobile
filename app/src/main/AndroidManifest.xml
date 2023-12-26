@@ -84,7 +84,9 @@
         <activity android:name=".Activity.Lookbook_LongActivity"
             android:exported="true">
         </activity>
-
+        <activity android:name=".Activity.OrderActivity"
+            android:exported="true">
+        </activity>
 
     </application>
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>

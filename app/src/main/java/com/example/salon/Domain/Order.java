@@ -3,13 +3,18 @@ package com.example.salon.Domain;
 import java.util.List;
 
 public class Order {
-    private String name, phone,email, address, money, detail;
+    private static String name;
+    private String phone;
+    private String email;
+    private String address;
+    private String money;
+    private String detail;
 
     public Order(){
 
     }
 
-    public Order(String name, String phone, String email, String address, String money, List buy)
+    public Order(String name, String phone, String email, String address, String money, String detail)
     {
         this.name=name;
         this.phone=phone;
@@ -23,7 +28,7 @@ public class Order {
         this.name = name;
     }
 
-    public String getName() {
+    public static String getName() {
         return name;
     }
 

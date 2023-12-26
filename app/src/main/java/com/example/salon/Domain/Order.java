@@ -3,7 +3,8 @@ package com.example.salon.Domain;
 import java.util.List;
 
 public class Order {
-    private static String name;
+    private static String ID;
+    private String name;
     private String phone;
     private String email;
     private String address;
@@ -14,8 +15,9 @@ public class Order {
 
     }
 
-    public Order(String name, String phone, String email, String address, String money, String detail)
+    public Order(String ID, String name, String phone, String email, String address, String money, String detail)
     {
+        this.ID =ID;
         this.name=name;
         this.phone=phone;
         this.email=email;
@@ -28,7 +30,7 @@ public class Order {
         this.name = name;
     }
 
-    public static String getName() {
+    public String getName() {
         return name;
     }
 
@@ -70,5 +72,13 @@ public class Order {
 
     public void setDetail(String detail) {
         this.detail = detail;
+    }
+
+    public static String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 }

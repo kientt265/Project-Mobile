@@ -16,13 +16,11 @@ import com.example.salon.Helper.ManagmentCart;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
+
+import java.util.UUID;
 
 public class OrderActivity extends  BaseActivity{
 
@@ -37,6 +35,7 @@ public class OrderActivity extends  BaseActivity{
 
         TextView detailTxt= findViewById(R.id.detailTxt);
         TextView priceTxt= findViewById(R.id.priceTxt);
+        TextView IDTxt = findViewById(R.id.IDTxt);
 
         EditText nameEdt= findViewById(R.id.edt_fullname);
         EditText emailEdt= findViewById(R.id.edt_email);
@@ -55,10 +54,16 @@ public class OrderActivity extends  BaseActivity{
         detailTxt.setText(intentDetail);
         priceTxt.setText(finalresult);
 
+        String uniqueID = UUID.randomUUID().toString();
+        IDTxt.setText(uniqueID);
+
+
+
 
         btnOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String ID = IDTxt.getText().toString();
                 String name = nameEdt.getText().toString();
                 String email = emailEdt.getText().toString();
                 String phone = phoneEdt.getText().toString();
@@ -70,10 +75,25 @@ public class OrderActivity extends  BaseActivity{
                 // Check if fields are not empty before proceeding
                 if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(phone) && !TextUtils.isEmpty(address) ) {
                     mDatabase = FirebaseDatabase.getInstance().getReference();
-                    writeNewOrder(name, email,phone, address, detail, price );
+                    writeNewOrder(ID, name, email,phone, address, detail, price );
+
+                    Intent intent = new Intent();
+                    intent.setClass(getApplicationContext(), HomeActivity.class);
+
+                    startActivity(intent);
                 } else {
                     Toast.makeText(OrderActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(v.getContext(), CartActivity.class);
+
+                startActivity(intent);
             }
         });
 
@@ -92,11 +112,11 @@ public class OrderActivity extends  BaseActivity{
 
         return total;
     }
-    public void writeNewOrder(String name, String email, String phone, String address, String detail, String price) {
+    public void writeNewOrder(String ID , String name, String email, String phone, String address, String detail, String price) {
         // Check if userID is not null before proceeding
-            Order order = new Order(name, phone, email, address, price, detail);
+            Order order = new Order(ID, name, phone, email, address, price, detail);
 
-            mDatabase.child("Orders").child(Order.getName()).setValue(order);
+            mDatabase.child("Orders").child(Order.getID()).setValue(order);
             Toast.makeText(OrderActivity.this, "Order added successfully", Toast.LENGTH_SHORT).show();
 
     }

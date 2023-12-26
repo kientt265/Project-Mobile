@@ -63,4 +63,10 @@ public class ManagmentCart {
         tinyDB.putListObject("CartList",listItem);
         changeNumberItemsListener.change();
     }
+    public void clearItem (ArrayList<Foods> listItem, ChangeNumberItemsListener changeNumberItemsListener)
+    {
+        listItem.clear();
+        changeNumberItemsListener.change();
+        tinyDB.putListObject("CartList",listItem);
+    }
 }

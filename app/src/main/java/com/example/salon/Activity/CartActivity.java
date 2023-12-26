@@ -108,7 +108,16 @@ public class CartActivity extends BaseActivity {
 
     private void setVariable() {
         ImageView backBtn = findViewById(R.id.backBtn);
-        backBtn.setOnClickListener(v -> finish());
+
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(v.getContext(), ShoppingActivity.class);
+                startActivity(intent);
+            }
+        });
 
         AppCompatButton orderBtn = findViewById(R.id.orderBtn);
         orderBtn.setOnClickListener(new View.OnClickListener() {

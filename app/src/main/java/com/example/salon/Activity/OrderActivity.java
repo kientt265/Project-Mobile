@@ -14,18 +14,28 @@ import com.example.salon.Domain.Order;
 import com.example.salon.R;
 import com.example.salon.Helper.ManagmentCart;
 import com.google.firebase.database.FirebaseDatabase;
+import com.example.salon.Helper.TinyDB;
+
+import com.example.salon.Adapter.CartAdapter;
+import com.example.salon.Helper.ChangeNumberItemsListener;
+import com.example.salon.Helper.ManagmentCart;
 
 
 
 import com.google.firebase.database.DatabaseReference;
 
 
+import java.util.List;
 import java.util.UUID;
 
 public class OrderActivity extends  BaseActivity{
 
     private DatabaseReference mDatabase;
     private ManagmentCart managmentCart;
+
+    private CartAdapter cartAdapter;
+    private TinyDB tinyDB;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -26,26 +26,15 @@
 > - Book service
 > - Shopping
 > - View Lookbook
-> - View booking and purchase notifications
-> - View purchase history and shopping cart
+> - View booking notifications
+> - View shopping cart
 > - Change information
-#### Staff functions
-> - Manage products
-> - Manage booking details
-> - Manage customer information
-> - Manage transactions
 
 
 
 ## Technology used in this project
 > - Language: Java.
 > - Công cụ lập trình giao diện: JavaSwing.
-> - Công cụ lập trình cơ sở dữ liệu: SQL Developer.
-> - Hệ quản trị cơ sở dữ liệu:  Oracle.
-> - Driver: ojdbc11.
+> - Công cụ lập trình cơ sở dữ liệu: Firebase Realtime Database.
 > - Công cụ thiết kế cơ sở dữ liệu: Draw.io.
-> - Công cụ xuất báo biểu: iReport.
-> - Công cụ quản lý: Github - quản lý mã nguồn, Trello - quản lý và phân công công việc.
 
-
-## How to run this project

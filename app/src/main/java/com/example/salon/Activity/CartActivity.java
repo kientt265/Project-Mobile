@@ -19,7 +19,7 @@ import com.example.salon.Helper.ChangeNumberItemsListener;
 import com.example.salon.Helper.ManagmentCart;
 import com.example.salon.Helper.TinyDB;
 import com.example.salon.R;
-import com.example.salon.Domain.Foods;
+import com.example.salon.Domain.Products;
 import java.util.List;
 
 public class CartActivity extends BaseActivity {
@@ -43,7 +43,7 @@ public class CartActivity extends BaseActivity {
     public String initDetail()
     {
         String detail = "";
-        List<Foods> list = managmentCart.getListCart();
+        List<Products> list = managmentCart.getListCart();
         for (int i = 0; i < list.size(); i++) {
             detail = detail+ list.get(i).toString();
             detail = detail +"*" + list.get(i).getNumberInCart() +";";

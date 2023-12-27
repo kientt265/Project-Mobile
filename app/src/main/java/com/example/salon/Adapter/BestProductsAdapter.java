@@ -15,16 +15,16 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.salon.Activity.DetailActivity;
-import com.example.salon.Domain.Foods;
+import com.example.salon.Domain.Products;
 import com.example.salon.R;
 
 import java.util.ArrayList;
 
-public class BestFoodsAdapter extends RecyclerView.Adapter<BestFoodsAdapter.viewholder> {
-    ArrayList<Foods> items;
+public class BestProductsAdapter extends RecyclerView.Adapter<BestProductsAdapter.viewholder> {
+    ArrayList<Products> items;
     Context context;
 
-    public BestFoodsAdapter(ArrayList<Foods> items) {
+    public BestProductsAdapter(ArrayList<Products> items) {
         this.items = items;
     }
 

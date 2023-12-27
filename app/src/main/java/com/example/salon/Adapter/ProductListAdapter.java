@@ -16,16 +16,16 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 
 import com.example.salon.Activity.DetailActivity;
-import com.example.salon.Domain.Foods;
+import com.example.salon.Domain.Products;
 import com.example.salon.R;
 
 import java.util.ArrayList;
 
-public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.viewholder> {
-    ArrayList<Foods> items;
+public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.viewholder> {
+    ArrayList<Products> items;
     Context context;
 
-    public FoodListAdapter(ArrayList<Foods> items) {
+    public ProductListAdapter(ArrayList<Products> items) {
         this.items = items;
     }
 
@@ -33,7 +33,7 @@ public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.viewho
     @Override
     public viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
-        View inflate = LayoutInflater.from(context).inflate(R.layout.viewholder_list_food, parent, false);
+        View inflate = LayoutInflater.from(context).inflate(R.layout.viewholder_list_product, parent, false);
         return new viewholder(inflate);
     }
 

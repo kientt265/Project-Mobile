@@ -2,10 +2,10 @@ package com.example.salon.Domain;
 
 import java.io.Serializable;
 
-public class Foods implements Serializable {
+public class Products implements Serializable {
     private int CategoryId;
     private String Description;
-    private boolean BestFood;
+    private boolean BestProduct;
     private int Id;
     private double Price;
     private String ImagePath;
@@ -15,7 +15,7 @@ public class Foods implements Serializable {
     private String Title;
     private int numberInCart;
 
-    public Foods() {
+    public Products() {
     }
 
     @Override
@@ -39,12 +39,12 @@ public class Foods implements Serializable {
         Description = description;
     }
 
-    public boolean isBestFood() {
-        return BestFood;
+    public boolean isBestProduct() {
+        return BestProduct;
     }
 
-    public void setBestFood(boolean bestFood) {
-        BestFood = bestFood;
+    public void setBestProduct(boolean bestProduct) {
+        BestProduct = bestProduct;
     }
 
     public int getId() {

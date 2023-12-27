@@ -90,7 +90,6 @@ public class ProfileActivity extends AppCompatActivity {
 
 
     private void getUserData(String userID) {
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference userRef = mDatabase.child("userID").child(userID).child("Personal Infomation");
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -99,7 +98,6 @@ public class ProfileActivity extends AppCompatActivity {
 
                     Toast.makeText(ProfileActivity.this, dataSnapshot.toString(), Toast.LENGTH_SHORT).show();
 
-                    User user = dataSnapshot.getValue(User.class);
 
                     String address_value = dataSnapshot.child("Address").getValue(String.class);
                     String birthday_value = dataSnapshot.child("Birthday").getValue(String.class);

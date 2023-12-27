@@ -88,30 +88,7 @@ public class booking_sel_staff extends AppCompatActivity {
         } else {
             Log.d("BookingInfo", "Null bookingInfo received");
         }
-        BottomNavigationView bottomNav = findViewById(R.id.bnv_staff); // Thay R.id.bottom_navigation bằng ID của BottomNavigationView trong layout của bạn
-        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
 
-                if (id == R.id.action_noti) {
-                    // Xử lý khi click vào Notifications
-                    NavigationManager.navigateToNotifications(booking_sel_staff.this);
-                    // Không gọi finish() ở đây nếu bạn không muốn kết thúc Activity hiện tại
-                } else if (id == R.id.action_home) {
-                    // Xử lý khi click vào Home
-                    NavigationManager.navigateToHome(booking_sel_staff.this);
-                } else if (id == R.id.action_cart) {
-                    // Xử lý khi click vào Cart
-                    NavigationManager.navigateToCart(booking_sel_staff.this);
-                } else if (id == R.id.action_acc) {
-                    NavigationManager.navigateToProfile(booking_sel_staff.this);
-                    // Xử lý khi click vào Settings
-                }
-
-                return true;
-            }
-        });
         ImageButton imageButton = (ImageButton) findViewById(R.id.back_staff);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override

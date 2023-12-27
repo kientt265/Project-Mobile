@@ -49,33 +49,7 @@ public class Booking_sel_locale extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.booking_sel_locate);
-        BottomNavigationView bottomNav = findViewById(R.id.bnv_locate); // Thay R.id.bottom_navigation bằng ID của BottomNavigationView trong layout của bạn
-        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
 
-                if (id == R.id.action_noti) {
-                    // Xử lý khi click vào Notifications
-                    NavigationManager.navigateToNotifications(Booking_sel_locale.this);
-                    // Không gọi finish() ở đây nếu bạn không muốn kết thúc Activity hiện tại
-                } else if (id == R.id.action_home) {
-                    // Xử lý khi click vào Home
-                    NavigationManager.navigateToHome(Booking_sel_locale.this);
-                } else if (id == R.id.action_cart) {
-                    // Xử lý khi click vào Cart
-                    NavigationManager.navigateToCart(Booking_sel_locale.this);
-                } else if (id == R.id.action_his) {
-                    // Xử lý khi click vào History
-                    NavigationManager.navigateToHistory(Booking_sel_locale.this);
-                } else if (id == R.id.action_acc) {
-                    // Xử lý khi click vào Settings
-                    NavigationManager.navigateToProfile(Booking_sel_locale.this);
-                }
-
-                return true;
-            }
-        });
 
         dataBase = FirebaseDatabase.getInstance();
         name0 = findViewById(R.id.tv_locate_name_0);

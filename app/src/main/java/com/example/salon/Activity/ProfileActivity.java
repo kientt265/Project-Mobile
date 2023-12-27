@@ -45,9 +45,6 @@ public class ProfileActivity extends AppCompatActivity {
                 } else if (id == R.id.action_cart) {
                     // Xử lý khi click vào Cart
                     NavigationManager.navigateToCart(ProfileActivity.this);
-                } else if (id == R.id.action_his) {
-                    // Xử lý khi click vào History
-                    NavigationManager.navigateToHistory(ProfileActivity.this);
                 }
 
                 return true;

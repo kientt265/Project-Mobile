@@ -78,10 +78,7 @@ public class NotiActivity extends AppCompatActivity {
                 } else if (id == R.id.action_cart) {
                     // Xử lý khi click vào Cart
                     NavigationManager.navigateToCart(NotiActivity.this);
-                } else if (id == R.id.action_his) {
-                    // Xử lý khi click vào History
-                    NavigationManager.navigateToHistory(NotiActivity.this);
-                } else if (id == R.id.action_acc) {
+                }  else if (id == R.id.action_acc) {
                     // Xử lý khi click vào Settings
                      NavigationManager.navigateToProfile(NotiActivity.this);
                 }

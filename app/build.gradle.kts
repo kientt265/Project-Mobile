@@ -1,7 +1,6 @@
 plugins {
     id("com.android.application")
     id("com.google.gms.google-services")
-
 }
 
 android {
@@ -70,6 +69,8 @@ dependencies {
     // dung cho lookbook
     implementation ("app.num.numandroidpagecurleffect:numandroidpagecurleffect:1.0")
     androidTestImplementation ("com.android.support.test:runner:1.0.2")
+
+
 
 
 

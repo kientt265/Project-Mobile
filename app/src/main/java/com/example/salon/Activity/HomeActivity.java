@@ -31,6 +31,8 @@ public class HomeActivity extends AppCompatActivity
         Button btn_booking = findViewById(R.id.home_btn_booking);
         Button btn_shopping = findViewById(R.id.home_btn_shopping);
         Button btn_lookbook = findViewById(R.id.home_btn_lookbook);
+
+
         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav); // Thay R.id.bottom_navigation bằng ID của BottomNavigationView trong layout của bạn
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -82,12 +84,11 @@ public class HomeActivity extends AppCompatActivity
 
 
 
+
         //Gán Listener cho editbutton
         btn_booking.setOnClickListener(listenerBooking);
         btn_shopping.setOnClickListener(listenerShopping);
         btn_lookbook.setOnClickListener(listenerLookbook);
-
-
 
 
     }

@@ -2,6 +2,7 @@ package com.example.salon.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +16,7 @@ import com.example.salon.Domain.User;
 import com.example.salon.Helper.NavigationManager;
 import com.example.salon.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -33,8 +35,6 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         FirebaseUser current = FirebaseAuth.getInstance().getCurrentUser();
-        Toast.makeText(this, "" + current.getUid(), Toast.LENGTH_SHORT).show();
-
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
@@ -90,22 +90,27 @@ public class ProfileActivity extends AppCompatActivity {
 
 
     private void getUserData(String userID) {
-        DatabaseReference userRef = mDatabase.child("userID").child(uid).child("Personal Information");
-
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference userRef = mDatabase.child("userID").child(userID).child("Personal Infomation");
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    // The dataSnapshot now contains the user data
+
+                    Toast.makeText(ProfileActivity.this, dataSnapshot.toString(), Toast.LENGTH_SHORT).show();
+
                     User user = dataSnapshot.getValue(User.class);
 
-                    Toast.makeText(ProfileActivity.this, user.toString(), Toast.LENGTH_SHORT).show();
+                    String address_value = dataSnapshot.child("Address").getValue(String.class);
+                    String birthday_value = dataSnapshot.child("Birthday").getValue(String.class);
+                    String emai_value = dataSnapshot.child("Email").getValue(String.class);
+                    String name_value = dataSnapshot.child("Name").getValue(String.class);
+                    String phone_value = dataSnapshot.child("Phone").getValue(String.class);
 
-                    // Do something with the user data, e.g., display it in TextViews
-                    tvName.setText(user.getName());
-                    tvMo.setText(user.getMobile());
-                    tvAdd.setText(user.getAddress());
-                    tvDob.setText(user.getDob());
+                    tvName.setText(String.valueOf(name_value));
+                    tvMo.setText(String.valueOf(phone_value));
+                    tvAdd.setText(String.valueOf(address_value));
+                    tvDob.setText(String.valueOf(birthday_value));
                 } else {
                     Toast.makeText(ProfileActivity.this, "User not found", Toast.LENGTH_SHORT).show();
                 }

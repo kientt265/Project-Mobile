@@ -82,10 +82,15 @@ public class Profile_edit extends AppCompatActivity {
                         writeNewInfo(name, number, email, address, dob);
                     }
 
+                    Intent intent = new Intent(Profile_edit.this, ProfileActivity.class);
+                    startActivity(intent);
+                    finish();
+
 
                 } else {
                     Toast.makeText(Profile_edit.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
                 }
+
 
             }
         });

@@ -29,7 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
     public static FirebaseAuth mAuth;
     public User user;
     private TextView tvName, tvMo, tvAdd, tvDob;
-    private String uid="PQmNbxSby5RIYe85WLHGkQQp4zp2";
+    private String uid;
 
     private DatabaseReference mDatabase;
     protected void onCreate(Bundle savedInstanceState) {

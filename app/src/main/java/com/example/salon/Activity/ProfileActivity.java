@@ -30,15 +30,21 @@ public class ProfileActivity extends AppCompatActivity {
     public User user;
     private TextView tvName, tvMo, tvAdd, tvDob,tvEm;
     private String uid;
+    BottomNavigationView bottomNavigationView;
 
     public String exist;
     private DatabaseReference mDatabase;
     protected void onCreate(Bundle savedInstanceState) {
 
+
+
         FirebaseUser current = FirebaseAuth.getInstance().getCurrentUser();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
+
+        bottomNavigationView  = findViewById(R.id.bnv_profile);
+        bottomNavigationView.setSelectedItemId(R.id.action_acc);
         Button btn_Signout= findViewById(R.id.btn_logout);
         Button btn_Update =findViewById(R.id.btn_update);
         BottomNavigationView bottomNav = findViewById(R.id.bnv_profile);

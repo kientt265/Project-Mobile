@@ -84,17 +84,10 @@ public class HomeActivity extends AppCompatActivity
             }
         };
 
-
-
-
-
-
         //Gán Listener cho editbutton
         btn_booking.setOnClickListener(listenerBooking);
         btn_shopping.setOnClickListener(listenerShopping);
         btn_lookbook.setOnClickListener(listenerLookbook);
-
-
 
     }
 

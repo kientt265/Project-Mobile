@@ -1,9 +1,11 @@
 package com.example.salon.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -138,16 +140,13 @@ public class NotiActivity extends AppCompatActivity {
                 }
             });
 
-            BottomNavigationView bottomNav = findViewById(R.id.bnv_noti);
-            bottomNav.setOnNavigationItemSelectedListener(item -> {
-                int id = item.getItemId();
+            ImageView backBtn =findViewById(R.id.backBtn);
+            backBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(NotiActivity.this, HomeActivity.class));
 
-                if (id == R.id.action_home) {
-                    NavigationManager.navigateToHome(NotiActivity.this);
-                } else if (id == R.id.action_cart) {
-                    NavigationManager.navigateToCart(NotiActivity.this);
                 }
-                return true;
             });
         }
     }

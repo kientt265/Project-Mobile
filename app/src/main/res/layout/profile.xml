@@ -50,7 +50,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email:" />
+                android:text="Name:" />
 
         </TableRow>
 
@@ -74,7 +74,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Password:" />
+                android:text="Phone number:" />
         </TableRow>
 
         <TableRow
@@ -87,7 +87,29 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="text"
-                android:hint="Enter your mobile"/>
+                android:hint="Enter your phone number"/>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone number:" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="310dp"
+            android:layout_height="12dp">
+
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="325dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="Enter your current email"/>
         </TableRow>
 
         <TableRow
@@ -97,7 +119,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Password:" />
+                android:text="Address:" />
         </TableRow>
 
         <TableRow
@@ -120,7 +142,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Password:" />
+                android:text="Day of birth:" />
         </TableRow>
 
         <TableRow
@@ -133,7 +155,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="text"
-                android:hint="Enter your dob"/>
+                android:hint="Enter your day of birth"/>
         </TableRow>
     </TableLayout>
 
@@ -155,12 +177,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bnv_profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:menu="@menu/menu_bottom_nav" />
     </RelativeLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bnv_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/menu_bottom_nav" />
 </LinearLayout>
 
 

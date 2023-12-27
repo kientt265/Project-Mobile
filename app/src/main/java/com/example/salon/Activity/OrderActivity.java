@@ -123,11 +123,12 @@ public class OrderActivity extends  BaseActivity{
         return total;
     }
     public void writeNewOrder(String ID , String name, String email, String phone, String address, String detail, String price) {
-        // Check if userID is not null before proceeding
             Order order = new Order(ID, name, phone, email, address, price, detail);
 
             mDatabase.child("Orders").child(Order.getID()).setValue(order);
             Toast.makeText(OrderActivity.this, "Order added successfully", Toast.LENGTH_SHORT).show();
+
+            this.managmentCart.clearCart();
 
     }
 }

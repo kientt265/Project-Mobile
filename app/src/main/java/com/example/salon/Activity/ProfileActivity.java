@@ -28,7 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 public class ProfileActivity extends AppCompatActivity {
     public static FirebaseAuth mAuth;
     public User user;
-    private TextView tvName, tvMo, tvAdd, tvDob;
+    private TextView tvName, tvMo, tvAdd, tvDob,tvEm;
     private String uid;
 
     private DatabaseReference mDatabase;
@@ -39,12 +39,15 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
         Button btn_Signout= findViewById(R.id.btn_logout);
+        Button btn_Update =findViewById(R.id.btn_update);
         BottomNavigationView bottomNav = findViewById(R.id.bnv_profile);
 
         tvName = findViewById(R.id.tv_name);
         tvMo = findViewById(R.id.tv_mobile);
+        tvEm =findViewById(R.id.tv_email);
         tvAdd = findViewById(R.id.tv_address);
         tvDob = findViewById(R.id.tv_dob);
+
 
 
         uid= current.getUid();
@@ -62,6 +65,15 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        btn_Update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, Profile_edit.class);
                 startActivity(intent);
                 finish();
             }
@@ -109,6 +121,7 @@ public class ProfileActivity extends AppCompatActivity {
                     tvMo.setText(String.valueOf(phone_value));
                     tvAdd.setText(String.valueOf(address_value));
                     tvDob.setText(String.valueOf(birthday_value));
+                    tvEm.setText(String.valueOf(birthday_value));
                 } else {
                     Toast.makeText(ProfileActivity.this, "User not found", Toast.LENGTH_SHORT).show();
                 }

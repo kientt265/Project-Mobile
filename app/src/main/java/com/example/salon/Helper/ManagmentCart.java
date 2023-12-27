@@ -69,4 +69,7 @@ public class ManagmentCart {
         changeNumberItemsListener.change();
         tinyDB.putListObject("CartList",listItem);
     }
+    public void clearCart() {
+        this.tinyDB.clear();
+    }
 }

@@ -31,6 +31,7 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView tvName, tvMo, tvAdd, tvDob,tvEm;
     private String uid;
 
+    public String exist;
     private DatabaseReference mDatabase;
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -60,6 +61,7 @@ public class ProfileActivity extends AppCompatActivity {
         getUserData(uid);
 
 
+
         btn_Signout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +76,9 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ProfileActivity.this, Profile_edit.class);
+
+                intent.putExtra("check", exist);
+
                 startActivity(intent);
                 finish();
             }
@@ -102,29 +107,31 @@ public class ProfileActivity extends AppCompatActivity {
 
 
     private void getUserData(String userID) {
-        DatabaseReference userRef = mDatabase.child("userID").child(userID).child("Personal Infomation");
+        DatabaseReference userRef = mDatabase.child("userID").child(userID).child("Personal Information");
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
 
-                    Toast.makeText(ProfileActivity.this, dataSnapshot.toString(), Toast.LENGTH_SHORT).show();
 
-
-                    String address_value = dataSnapshot.child("Address").getValue(String.class);
-                    String birthday_value = dataSnapshot.child("Birthday").getValue(String.class);
-                    String emai_value = dataSnapshot.child("Email").getValue(String.class);
-                    String name_value = dataSnapshot.child("Name").getValue(String.class);
-                    String phone_value = dataSnapshot.child("Phone").getValue(String.class);
+                    String address_value = dataSnapshot.child("address").getValue(String.class);
+                    String birthday_value = dataSnapshot.child("dob").getValue(String.class);
+                    String emai_value = dataSnapshot.child("email").getValue(String.class);
+                    String name_value = dataSnapshot.child("name").getValue(String.class);
+                    String phone_value = dataSnapshot.child("mobile").getValue(String.class);
 
                     tvName.setText(String.valueOf(name_value));
                     tvMo.setText(String.valueOf(phone_value));
                     tvAdd.setText(String.valueOf(address_value));
                     tvDob.setText(String.valueOf(birthday_value));
-                    tvEm.setText(String.valueOf(birthday_value));
+                    tvEm.setText(String.valueOf(emai_value));
+
+                    exist = "Yes";
                 } else {
-                    Toast.makeText(ProfileActivity.this, "User not found", Toast.LENGTH_SHORT).show();
+                    exist = "No";
                 }
+
+
             }
 
             @Override

@@ -44,10 +44,10 @@ public class RegisterActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.change_login);
 
         editTextEmail= findViewById(R.id.edt_email);
-        editTextPassword =findViewById(R.id.edt_password);
-        editTextConfirm = findViewById(R.id.edt_confirm);
+        editTextPassword =findViewById(R.id.edt_password_regis1);
+        editTextConfirm = findViewById(R.id.edt_password_confirm_regis1);
 
-        btnSignUp=findViewById(R.id.btn_register);
+        btnSignUp=findViewById(R.id.btn_register_regis1);
         progressBar=findViewById(R.id.progressbar);
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override

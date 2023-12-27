@@ -14,152 +14,134 @@
         android:layout_marginBottom="8dp"
         android:scaleType="centerCrop"></ImageView>
 
-    <LinearLayout
-        android:layout_marginBottom="8dp"
+    <TableLayout
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
-        <!-- Cặp thông tin 1 -->
-        <TextView
-            android:layout_marginLeft="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="UID:" />
+        <TableRow>
+            <!-- Cặp thông tin 1 -->
+            <TextView
+                android:layout_marginLeft="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="UID:" />
 
-        <TextView
-            android:id="@+id/tv_id"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@android:dimen/app_icon_size"
-            android:ems="10"
-            android:inputType="text"
-            android:hint="Enter your name" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_marginBottom="8dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <!-- Cặp thông tin 1 -->
-        <TextView
-            android:layout_marginLeft="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="Name:" />
-
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:layout_marginLeft="@android:dimen/app_icon_size"
-            android:inputType="text"
-            android:hint="No information" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:orientation="horizontal">
-
-        <!-- Cặp thông tin 1 -->
-        <TextView
-            android:layout_marginLeft="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="Phone number:" />
-
-        <TextView
-            android:id="@+id/tv_mobile"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:layout_marginLeft="@android:dimen/app_icon_size"
-            android:inputType="text"
-            android:hint="No information" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:orientation="horizontal">
-
-        <!-- Cặp thông tin 1 -->
-        <TextView
-            android:layout_marginLeft="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="Current mail:" />
-
-        <TextView
-            android:id="@+id/tv_email"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:layout_marginLeft="@android:dimen/app_icon_size"
-            android:inputType="text"
-            android:hint="No information" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:orientation="horizontal">
-
-        <!-- Cặp thông tin 1 -->
-        <TextView
-            android:layout_marginLeft="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="Address:" />
-
-        <TextView
-            android:id="@+id/tv_address"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text"
-            android:layout_marginLeft="@android:dimen/app_icon_size"
-            android:hint="No information" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:orientation="horizontal">
-
-        <!-- Cặp thông tin 1 -->
-        <TextView
-            android:layout_marginLeft="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="Day of birth:" />
-
-        <TextView
-            android:id="@+id/tv_dob"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text"
-            android:layout_marginLeft="@android:dimen/app_icon_size"
-            android:hint="No information" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tv_id"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@android:dimen/app_icon_size"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="UID" />
+        </TableRow>
 
 
+        <TableRow>
+            <!-- Cặp thông tin 1 -->
+            <TextView
+                android:layout_marginLeft="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Name:" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginLeft="@android:dimen/app_icon_size"
+                android:inputType="text"
+                android:hint="No information" />
+        </TableRow>
+
+        <TableRow>
+            <!-- Cặp thông tin 1 -->
+            <TextView
+                android:layout_marginLeft="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Phone number:" />
+
+            <TextView
+                android:id="@+id/tv_mobile"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginLeft="@android:dimen/app_icon_size"
+                android:inputType="text"
+                android:hint="No information" />
+        </TableRow>
+
+        <TableRow>
+            <!-- Cặp thông tin 1 -->
+            <TextView
+                android:layout_marginLeft="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Current mail:" />
+
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginLeft="@android:dimen/app_icon_size"
+                android:inputType="text"
+                android:hint="No information" />
+        </TableRow>
+
+        <TableRow>
+
+            <!-- Cặp thông tin 1 -->
+            <TextView
+                android:layout_marginLeft="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Address:" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:layout_marginLeft="@android:dimen/app_icon_size"
+                android:hint="No information" />
+        </TableRow>
+
+        <TableRow>
+
+            <!-- Cặp thông tin 1 -->
+            <TextView
+                android:layout_marginLeft="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Day of birth:" />
+
+            <TextView
+                android:id="@+id/tv_dob"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:layout_marginLeft="@android:dimen/app_icon_size"
+                android:hint="No information" />
+        </TableRow>
+    </TableLayout>
     <RelativeLayout
         android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
@@ -201,6 +183,7 @@
                 android:text="Sign Out"></Button>
         </RelativeLayout>
     </RelativeLayout>
+
 </LinearLayout>
 
 

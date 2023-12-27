@@ -5,10 +5,13 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.salon.Booking.user_class;
 import com.example.salon.R;
-
+import com.google.firebase.Firebase;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +21,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.appcheck.FirebaseAppCheck;
 import com.google.firebase.appcheck.debug.DebugAppCheckProviderFactory;
+import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,20 +29,12 @@ import com.google.firebase.auth.FirebaseUser;
 public class LoginActivity extends AppCompatActivity{
     TextInputEditText edt_email, edt_password;
     Button btn_login, btn_signup,btn_forgot;
-    FirebaseAuth mAuth;
-
-    @Override
-    public void onBackPressed() {
-
-    }
-
-
 
     @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        FirebaseUser currentUser = user_class.mAuth.getCurrentUser();
 
         if(currentUser != null){
             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
@@ -56,7 +52,7 @@ public class LoginActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_page);
 
-        mAuth = FirebaseAuth.getInstance();
+        user_class.mAuth = FirebaseAuth.getInstance();
         edt_email = findViewById(R.id.edt_login_email);
         edt_password = findViewById(R.id.edt_login_password);
         btn_login = findViewById(R.id.btn_login);
@@ -84,13 +80,12 @@ public class LoginActivity extends AppCompatActivity{
                     return;
                 }
                 if(email.length()>0 && password.length()>0){
-                    mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    user_class.mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()){
                                 Toast.makeText(LoginActivity.this, "User logged in successfully", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                                finish();
                             }else{
                                 Toast.makeText(LoginActivity.this, "Log in Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }

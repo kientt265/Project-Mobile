@@ -86,13 +86,17 @@
 
         <ImageButton
             android:id="@+id/ibutton_next"
-            android:layout_width="wrap_content"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/grey_background"
-            android:padding="12dp"
-            android:layout_marginEnd="6dp"
-
-            app:srcCompat="@drawable/icon_back" />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="-3dp"
+            android:layout_marginLeft="-3dp"
+            android:layout_marginEnd="388dp"
+            android:layout_marginRight="388dp"
+            android:src="@drawable/icon_back" />
 
     </RelativeLayout>
 
@@ -109,7 +113,8 @@
             <RelativeLayout
                 android:id="@+id/location_0"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF">
 
                 <ImageView
                     android:id="@+id/iv_capeli_locale1"
@@ -135,8 +140,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_gravity="center"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="195dp"
-                    android:layout_marginRight="195dp"
+                    android:layout_marginRight="180dp"
                     android:text="Name: San rose"
                     android:textStyle="bold" />
 
@@ -149,16 +153,16 @@
                     android:layout_alignParentRight="true"
                     android:layout_gravity="center"
                     android:layout_marginTop="38dp"
-                    android:layout_marginEnd="166dp"
-                    android:layout_marginRight="166dp"
-                    android:text="Address : Walnet St."
+                    android:layout_marginRight="120dp"
+                    android:text="Address : 42 Maple Street"
                     android:textStyle="bold" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/location_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF">
 
                 <TextView
                     android:id="@+id/tv_locate_name_1"
@@ -169,9 +173,8 @@
                     android:layout_alignParentRight="true"
                     android:layout_gravity="center"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="195dp"
-                    android:layout_marginRight="195dp"
-                    android:text="Name: San rose"
+                    android:layout_marginRight="150dp"
+                    android:text="Name: Maria Garcia"
                     android:textStyle="bold" />
 
                 <TextView
@@ -183,9 +186,8 @@
                     android:layout_alignParentRight="true"
                     android:layout_gravity="center"
                     android:layout_marginTop="38dp"
-                    android:layout_marginEnd="166dp"
-                    android:layout_marginRight="166dp"
-                    android:text="Address : Walnet St."
+                    android:layout_marginRight="90dp"
+                    android:text="Address : 1080 Peachtree Ave"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -205,7 +207,8 @@
             <RelativeLayout
                 android:id="@+id/location_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF">
 
                 <TextView
                     android:id="@+id/tv_locate_name_2"
@@ -216,9 +219,8 @@
                     android:layout_alignParentRight="true"
                     android:layout_gravity="center"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="195dp"
-                    android:layout_marginRight="195dp"
-                    android:text="Name: San rose"
+                    android:layout_marginRight="180dp"
+                    android:text="Name: Sam Lee"
                     android:textStyle="bold" />
 
                 <TextView
@@ -230,13 +232,12 @@
                     android:layout_alignParentRight="true"
                     android:layout_gravity="center"
                     android:layout_marginTop="38dp"
-                    android:layout_marginEnd="166dp"
-                    android:layout_marginRight="166dp"
-                    android:text="Address : Walnet St."
+                    android:layout_marginRight="90dp"
+                    android:text="Address : 500 West College St"
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/iv_shop_product_pic2"
                     android:layout_width="81dp"
                     android:layout_height="81dp"
                     android:layout_alignParentStart="true"
@@ -257,7 +258,8 @@
             <RelativeLayout
                 android:id="@+id/location_3"
                 android:layout_width="match_parent"
-                android:layout_height="110dp">
+                android:layout_height="110dp"
+                android:background="#FFFFFF">
 
                 <TextView
                     android:id="@+id/tv_locate_name_3"
@@ -268,9 +270,8 @@
                     android:layout_alignParentRight="true"
                     android:layout_gravity="center"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="195dp"
-                    android:layout_marginRight="195dp"
-                    android:text="Name: San rose"
+                    android:layout_marginRight="140dp"
+                    android:text="Name: Isabella Smith"
                     android:textStyle="bold" />
 
                 <TextView
@@ -282,9 +283,8 @@
                     android:layout_alignParentRight="true"
                     android:layout_gravity="center"
                     android:layout_marginTop="38dp"
-                    android:layout_marginEnd="166dp"
-                    android:layout_marginRight="166dp"
-                    android:text="Address : Walnet St."
+                    android:layout_marginRight="80dp"
+                    android:text="Address : 255 North Harbor Blvd"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -310,5 +310,15 @@
 
     </ScrollView>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bnv_locate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:menu="@menu/menu_bottom_nav"></com.google.android.material.bottomnavigation.BottomNavigationView>
+    </RelativeLayout>
 
 </LinearLayout>

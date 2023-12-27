@@ -12,9 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.salon.Domain.BookingInfo;
-import com.example.salon.Helper.NavigationManager;
 import com.example.salon.Activity.NotiActivity;
+import com.example.salon.Helper.NavigationManager;
 import com.example.salon.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -26,7 +25,6 @@ public class booking_confirm extends AppCompatActivity {
         setContentView(R.layout.booking_confirm);
         back = findViewById(R.id.back_confirm);
         Intent intent = getIntent();
-        BookingInfo bookingInfo = (BookingInfo) intent.getSerializableExtra("booking_info");
         final CheckBox checkBox = findViewById(R.id.checkBox);
         final Button btn_book_now = findViewById(R.id.btn_book_now);
 
@@ -48,7 +46,6 @@ public class booking_confirm extends AppCompatActivity {
 
         btn_book_now.setOnClickListener(v -> {
             Intent newintent = new Intent(booking_confirm.this, NotiActivity.class);
-            newintent.putExtra("booking_info", bookingInfo);
             startActivity(newintent);
             Toast.makeText(booking_confirm.this, "Successful registration", Toast.LENGTH_SHORT).show();
             finish();

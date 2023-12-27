@@ -17,10 +17,8 @@ import com.google.firebase.auth.FirebaseAuth;
 public class ForgotActivity extends AppCompatActivity {
     TextInputEditText edt_email;
 
-
-    Button btn_forgot;
+    Button btn_reset;
     FirebaseAuth mAuth;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -29,10 +27,9 @@ public class ForgotActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.forgot_page);
 
-        edt_email=findViewById(R.id.edt_forgot_email);
-        btn_forgot = findViewById(R.id.btn_reset);
-
-        btn_forgot.setOnClickListener(new View.OnClickListener() {
+        Button btn_reset = findViewById(R.id.btn_reset);
+        edt_email = findViewById(R.id.edt_forgot_email);
+        btn_reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email= String.valueOf(edt_email.getText());

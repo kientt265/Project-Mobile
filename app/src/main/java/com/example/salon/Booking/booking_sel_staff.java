@@ -1,6 +1,7 @@
 package com.example.salon.Booking;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -13,35 +14,45 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.salon.Domain.BookingInfo;
 import com.example.salon.Helper.NavigationManager;
 import com.example.salon.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class booking_sel_staff extends AppCompatActivity {
     RelativeLayout staff0, staff1, staff2, staff3;
     TextView namestaff0, namestaff1, namestaff2, namestaff3, phone0, phone1, phone2,phone3;
-
+    user_class user_class;
+    FirebaseUser user = user_class.mAuth.getCurrentUser();
+    String userID = user.getUid();
     private void setStaffOnClickListener(final RelativeLayout staff, final  TextView namestaffTextview, final  TextView pnumberTextview) {
         staff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Thực hiện hành động khi nhấn vào schedule ở đây
-                // Thêm logic kiểm tra sự lựa chọn nếu cần
+                staff.setBackgroundColor(Color.parseColor("#B7B7B7"));
                 String namestaff = namestaffTextview.getText().toString();
                 String pnumber = pnumberTextview.getText().toString();
-                BookingInfo bookingInfo = new BookingInfo("", "", "", namestaff, pnumber);
-                // Sử dụng thông tin name và address ở đây (ví dụ: hiển thị hoặc xử lý thông tin)
-                // Ví dụ:
+                user_class user_class = new user_class("", "","", "", namestaff, pnumber);
+
                 Toast.makeText(getApplicationContext(), "Selected Name: " + namestaff + ", Phone number: " + pnumber, Toast.LENGTH_SHORT).show();
+
+                FirebaseDatabase database = user_class.Database.getInstance();
+
+                if (userID != null) {
+
+                    DatabaseReference bookingRef = database.getReference().child("userID").child(userID).child("InfoBooking").child("Staff name");
+                    bookingRef.setValue(namestaff);
+
+                    bookingRef = database.getReference().child("userID").child(userID).child("InfoBooking").child("Phone number");
+                    bookingRef.setValue(pnumber);
+                }
+                //intent
                 Intent intent = new Intent(booking_sel_staff.this, booking_confirm.class);
-                intent.putExtra("booking_info", bookingInfo);
+                intent.putExtra("booking_info", user_class);
                 startActivity(intent);
-                finish(); // Đóng activity hiện tại nếu cần
-                DatabaseReference bookingRef = FirebaseDatabase.getInstance().getReference().child("bookings");
-                bookingRef.push().setValue(bookingInfo);
+                finish();
             }
         });
     }
@@ -66,18 +77,41 @@ public class booking_sel_staff extends AppCompatActivity {
         setStaffOnClickListener(staff2, namestaff2, phone2);
         setStaffOnClickListener(staff3, namestaff3, phone3);
         Intent intent = getIntent();
-        BookingInfo bookingInfo = (BookingInfo) intent.getSerializableExtra("booking_info");
+        user_class user_class = (user_class) intent.getSerializableExtra("booking_info");
 // hoặc sử dụng getParcelableExtra nếu bạn đã sử dụng Parcelable
-        if (bookingInfo != null) {
+        if (user_class != null) {
             // Kiểm tra xem dữ liệu đã được chuyển qua hay chưa bằng cách in ra log
-            Log.d("BookingInfo", "Name: " + bookingInfo.getName());
-            Log.d("BookingInfo", "Address: " + bookingInfo.getAddress());
-            Log.d("BookingInfo", "Time: " + bookingInfo.getTime());
+            Log.d("BookingInfo", "Name: " + user_class.getName());
+            Log.d("BookingInfo", "Address: " + user_class.getAddress());
+            Log.d("BookingInfo", "Time: " + user_class.getTime());
             // Kiểm tra các trường thông tin khác tương tự ở đây
         } else {
             Log.d("BookingInfo", "Null bookingInfo received");
         }
+        BottomNavigationView bottomNav = findViewById(R.id.bnv_staff); // Thay R.id.bottom_navigation bằng ID của BottomNavigationView trong layout của bạn
+        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
 
+                if (id == R.id.action_noti) {
+                    // Xử lý khi click vào Notifications
+                    NavigationManager.navigateToNotifications(booking_sel_staff.this);
+                    // Không gọi finish() ở đây nếu bạn không muốn kết thúc Activity hiện tại
+                } else if (id == R.id.action_home) {
+                    // Xử lý khi click vào Home
+                    NavigationManager.navigateToHome(booking_sel_staff.this);
+                } else if (id == R.id.action_cart) {
+                    // Xử lý khi click vào Cart
+                    NavigationManager.navigateToCart(booking_sel_staff.this);
+                } else if (id == R.id.action_acc) {
+                    NavigationManager.navigateToProfile(booking_sel_staff.this);
+                    // Xử lý khi click vào Settings
+                }
+
+                return true;
+            }
+        });
         ImageButton imageButton = (ImageButton) findViewById(R.id.back_staff);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override

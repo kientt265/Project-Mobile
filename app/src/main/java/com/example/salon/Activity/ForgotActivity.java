@@ -28,7 +28,7 @@ public class ForgotActivity extends AppCompatActivity {
     {
         mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.info_page);
+        setContentView(R.layout.profile);
 
         Button btn_logout = findViewById(R.id.btn_logout);
 

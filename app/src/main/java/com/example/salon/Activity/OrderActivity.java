@@ -13,6 +13,8 @@ import android.widget.Toast;
 import com.example.salon.Domain.Order;
 import com.example.salon.R;
 import com.example.salon.Helper.ManagmentCart;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.example.salon.Helper.TinyDB;
 
@@ -35,6 +37,8 @@ public class OrderActivity extends  BaseActivity{
 
     private CartAdapter cartAdapter;
     private TinyDB tinyDB;
+    private String uid;
+    private String orderID;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,8 @@ public class OrderActivity extends  BaseActivity{
         setContentView(R.layout.activity_order);
 
         managmentCart = new ManagmentCart(this);
+
+        FirebaseUser current = FirebaseAuth.getInstance().getCurrentUser();
 
         TextView detailTxt= findViewById(R.id.detailTxt);
         TextView priceTxt= findViewById(R.id.priceTxt);
@@ -64,9 +70,10 @@ public class OrderActivity extends  BaseActivity{
         detailTxt.setText(intentDetail);
         priceTxt.setText(finalresult);
 
-        String uniqueID = UUID.randomUUID().toString();
-        IDTxt.setText(uniqueID);
+        String orderID = UUID.randomUUID().toString();
+        IDTxt.setText(orderID);
 
+        uid= current.getUid();
 
 
 
@@ -85,7 +92,9 @@ public class OrderActivity extends  BaseActivity{
                 // Check if fields are not empty before proceeding
                 if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(phone) && !TextUtils.isEmpty(address) ) {
                     mDatabase = FirebaseDatabase.getInstance().getReference();
+
                     writeNewOrder(ID, name, email,phone, address, detail, price );
+
 
                     Intent intent = new Intent();
                     intent.setClass(getApplicationContext(), HomeActivity.class);
@@ -125,11 +134,13 @@ public class OrderActivity extends  BaseActivity{
     public void writeNewOrder(String ID , String name, String email, String phone, String address, String detail, String price) {
             Order order = new Order(ID, name, phone, email, address, price, detail);
 
-            mDatabase.child("Orders").child(Order.getID()).setValue(order);
+            mDatabase.child("Orders").child(uid).child(Order.getID()).setValue(order);
             Toast.makeText(OrderActivity.this, "Order added successfully", Toast.LENGTH_SHORT).show();
 
             this.managmentCart.clearCart();
 
     }
+
+
 }
 

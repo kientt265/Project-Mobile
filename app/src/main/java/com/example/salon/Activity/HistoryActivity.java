@@ -54,6 +54,10 @@ public class HistoryActivity extends BaseActivity{
                     // Xử lý khi click vào Cart
                     NavigationManager.navigateToCart(HistoryActivity.this);
                 }
+                else if (id == R.id.action_acc) {
+                    // Xử lý khi click vào Cart
+                    NavigationManager.navigateToProfile(HistoryActivity.this);
+                }
 
                 return true;
             }

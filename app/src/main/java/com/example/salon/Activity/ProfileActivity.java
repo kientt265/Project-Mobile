@@ -105,6 +105,11 @@ public class ProfileActivity extends AppCompatActivity {
                     // Xử lý khi click vào Cart
                     NavigationManager.navigateToCart(ProfileActivity.this);
                 }
+                else if (id == R.id.action_his) {
+                    // Xử lý khi click vào Cart
+                    NavigationManager.navigateToHistory(ProfileActivity.this);
+                }
+
 
                 return true;
             }

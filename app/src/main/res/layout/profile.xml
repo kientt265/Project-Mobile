@@ -161,15 +161,26 @@
             android:layout_marginBottom="263dp"
             android:orientation="horizontal">
 
+
             <Button
                 android:id="@+id/btn_update"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="70dp"
-                android:layout_marginEnd="248dp"
+                android:layout_marginStart="161dp"
+                android:layout_marginEnd="157dp"
                 android:text="Update"></Button>
+
+            <Button
+                android:id="@+id/btn_report"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="39dp"
+                android:layout_marginEnd="279dp"
+                android:text="Report"></Button>
 
             <Button
                 android:id="@+id/btn_logout"
@@ -177,9 +188,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="243dp"
+                android:layout_marginStart="274dp"
                 android:layout_marginLeft="@android:dimen/app_icon_size"
-                android:layout_marginEnd="48dp"
+                android:layout_marginEnd="17dp"
                 android:text="Sign Out"></Button>
         </RelativeLayout>
     </RelativeLayout>

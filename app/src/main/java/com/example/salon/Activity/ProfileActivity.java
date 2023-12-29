@@ -1,6 +1,7 @@
 package com.example.salon.Activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -47,6 +48,8 @@ public class ProfileActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.action_acc);
         Button btn_Signout= findViewById(R.id.btn_logout);
         Button btn_Update =findViewById(R.id.btn_update);
+        Button btn_Report =findViewById(R.id.btn_report);
+
         BottomNavigationView bottomNav = findViewById(R.id.bnv_profile);
 
         tvName = findViewById(R.id.tv_name);
@@ -87,6 +90,15 @@ public class ProfileActivity extends AppCompatActivity {
 
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        btn_Report.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:0347712598"));
+                startActivity(intent);
             }
         });
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

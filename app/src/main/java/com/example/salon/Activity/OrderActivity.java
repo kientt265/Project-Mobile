@@ -28,6 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 
 
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 public class OrderActivity extends  BaseActivity{
@@ -70,7 +71,9 @@ public class OrderActivity extends  BaseActivity{
         detailTxt.setText(intentDetail);
         priceTxt.setText(finalresult);
 
-        String orderID = UUID.randomUUID().toString();
+//        String orderID = UUID.randomUUID().toString();
+
+        String orderID =RandomStringGenerator();
         IDTxt.setText(orderID);
 
         uid= current.getUid();
@@ -141,6 +144,22 @@ public class OrderActivity extends  BaseActivity{
 
     }
 
+    public String RandomStringGenerator() {
+        int length = 10;
+        String[] args;
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        Random random = new Random();
+
+        StringBuilder randomString = new StringBuilder();
+
+        for (int i = 0; i < length; i++) {
+            int index = random.nextInt(characters.length());
+            char randomChar = characters.charAt(index);
+            randomString.append(randomChar);
+        }
+
+        return randomString.toString();
+    }
 
 }
 

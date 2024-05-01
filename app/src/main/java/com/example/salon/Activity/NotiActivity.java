@@ -1,5 +1,6 @@
 package com.example.salon.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.salon.Booking.Booking_sel_locale;
 import com.example.salon.Booking.user_class;
 import com.example.salon.Helper.NavigationManager;
 import com.example.salon.R;
@@ -30,19 +32,25 @@ public class NotiActivity extends AppCompatActivity {
     private ArrayAdapter<String> adapter;
     private ArrayList<String> notificationList;
     Button btndelete;
+    Button btnchange;
+    SharedPreferences prefs;
+    private static final String PREFS_NAME = "MyPrefs";
+    private static final String IS_STAFF_HIDDEN_KEY = "isStaffHidden";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notifications_page);
-
+        btnchange = findViewById(R.id.btn_change_infobk);
         btndelete = findViewById(R.id.btn_delete_infobk);
         listnoti = findViewById(R.id.notificationListView);
         notificationList = new ArrayList<>();
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, notificationList);
         listnoti.setAdapter(adapter);
+        prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         DatabaseReference addressRef = user_class.Database.getReference().child("userID").child(user_class.mAuth.getUid()).child("InfoBooking");
         btndelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 addressRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -70,6 +78,36 @@ public class NotiActivity extends AppCompatActivity {
 //                    user_class.Database.getReference().child("userID").child(user_class.mAuth.getUid()).child("InfoBooking").removeValue();
 //                    Toast.makeText(NotiActivity.this, "Deleted successfully.", Toast.LENGTH_SHORT).show();
 //                }
+            }
+        });
+        btnchange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addressRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            // Nút "Address" tồn tại và có dữ liệu
+                            // Xóa nút "Address" hoặc thực hiện các thao tác cần thiết
+                            addressRef.removeValue();
+                            Toast.makeText(NotiActivity.this, "Deleted successfully.", Toast.LENGTH_SHORT).show();
+                        } else {
+                            // Nút "Address" không tồn tại hoặc không có dữ liệu
+                            Toast.makeText(NotiActivity.this, "You haven't booked a schedule yet. Schedule it and try again!", Toast.LENGTH_SHORT).show();
+                        }
+
+                        // Khởi động Intent mới sau khi thực hiện các thao tác trên
+                        Intent newintent = new Intent(NotiActivity.this, Booking_sel_locale.class);
+                        startActivity(newintent);
+                        Toast.makeText(NotiActivity.this, "Successful registration", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        // Xử lý khi có lỗi xảy ra trong quá trình đọc dữ liệu
+                    }
+                });
             }
         });
 
@@ -144,7 +182,7 @@ public class NotiActivity extends AppCompatActivity {
             backBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(NotiActivity.this, HomeActivity.class));
+                    startActivity(new Intent(NotiActivity.this, ShoppingActivity.class));
 
                 }
             });

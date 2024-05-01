@@ -1,15 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".Activity.MainActivity">
+    tools:context=".Activity.HomeActivity"
+    android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="700dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,9 +27,9 @@
                     android:id="@+id/backBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
+                    android:layout_marginEnd="6dp"
                     android:background="@drawable/grey_background"
                     android:padding="12dp"
-                    android:layout_marginEnd="6dp"
 
                     app:srcCompat="@drawable/icon_back" />
 
@@ -56,8 +55,7 @@
                         android:textAlignment="center"
                         android:textColor="@color/blue_grey"
                         android:textColorHint="@color/blue_grey"
-                        android:textSize="16sp"
-                        />
+                        android:textSize="16sp" />
 
                     <ImageView
                         android:id="@+id/searchBtn"
@@ -85,26 +83,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.3333"
                     android:layout_marginEnd="8dp"
+                    android:layout_weight="0.3333"
                     android:background="@drawable/grey_background"
                     android:orientation="horizontal">
-
 
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Good Price"
-                        android:gravity="center">
-                    </TextView>
+                        android:gravity="center"
+                        android:text="Good Price"></TextView>
                 </LinearLayout>
 
                 <LinearLayout
@@ -117,39 +113,35 @@
                     android:orientation="horizontal">
 
 
-
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="High Quality"
-                        android:gravity="center">
-                    </TextView>
+                        android:gravity="center"
+                        android:text="High Quality"></TextView>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="40dp"
-                    android:layout_weight="0.3333"
                     android:layout_marginStart="8dp"
+                    android:layout_weight="0.3333"
                     android:background="@drawable/grey_background"
                     android:orientation="horizontal">
-
 
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="For all gender"
-                        android:gravity="center">
-                    </TextView>
+                        android:gravity="center"
+                        android:text="For all gender"></TextView>
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="24dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
                 android:orientation="horizontal">
 
@@ -161,7 +153,7 @@
                     android:text="Our best products"
                     android:textColor="@color/blue_grey"
                     android:textSize="22dp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -193,12 +185,12 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:layout_marginStart="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:layout_weight="1"
                 android:text="Choose Category"
-                android:layout_marginTop="16dp"
                 android:textColor="@color/blue_grey"
                 android:textSize="22dp"
                 android:textStyle="bold" />
@@ -228,4 +220,17 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="true"> <!-- Set layout_gravity to bottom -->
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:menu="@menu/menu_bottom_nav"
+            android:id="@+id/nav_shopping_1">
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+    </RelativeLayout>
+</LinearLayout>

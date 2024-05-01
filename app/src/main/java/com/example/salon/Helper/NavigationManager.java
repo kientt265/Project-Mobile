@@ -7,6 +7,8 @@ import com.example.salon.Activity.HistoryActivity;
 import com.example.salon.Activity.HomeActivity;
 import com.example.salon.Activity.NotiActivity;
 import com.example.salon.Activity.ProfileActivity;
+import com.example.salon.Activity.ShoppingActivity;
+import com.example.salon.Booking.Booking_sel_locale;
 
 public class NavigationManager {
     public static void navigateToNotifications(Activity currentActivity) {
@@ -14,7 +16,7 @@ public class NavigationManager {
         currentActivity.startActivity(intent);
     }
     public static void navigateToHome(Activity currentActivity) {
-        Intent intent = new Intent(currentActivity, HomeActivity.class);
+        Intent intent = new Intent(currentActivity, ShoppingActivity.class);
         currentActivity.startActivity(intent);
     }
     public static void navigateToCart(Activity currentActivity) {
@@ -22,7 +24,7 @@ public class NavigationManager {
         currentActivity.startActivity(intent);
     }
     public static void navigateToHistory(Activity currentActivity) {
-        Intent intent = new Intent(currentActivity, HistoryActivity.class);
+        Intent intent = new Intent(currentActivity, Booking_sel_locale.class);
         currentActivity.startActivity(intent);
     }
     public  static  void navigateToProfile (Activity currenActivity) {

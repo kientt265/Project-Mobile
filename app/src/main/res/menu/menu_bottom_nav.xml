@@ -23,8 +23,8 @@
         android:id="@+id/action_his"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:title="History"
-        android:icon="@drawable/icon_his"/>
+        android:title="Booking"
+        android:icon="@drawable/icon_booking"/>
     <item
         android:id="@+id/action_acc"
         android:layout_width="wrap_content"

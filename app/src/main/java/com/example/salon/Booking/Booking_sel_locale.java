@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.salon.Activity.ShoppingActivity;
 import com.example.salon.Helper.NavigationManager;
 import com.example.salon.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -24,7 +25,7 @@ import java.lang.ref.Reference;
 public class Booking_sel_locale extends AppCompatActivity {
     RelativeLayout location, location0, location1, location2, location3;
     TextView name0, name1, name2, name3, address0, address1, address2, address3;
-
+    ImageButton back;
     FirebaseUser user = user_class.mAuth.getCurrentUser();
     String userID = user.getUid();
     private void setLocationOnClickListener(final RelativeLayout location, final TextView nameTextView, final TextView addressTextView) {
@@ -86,32 +87,17 @@ public class Booking_sel_locale extends AppCompatActivity {
         setLocationOnClickListener(location1, name1, address1);
         setLocationOnClickListener(location2, name2, address2);
         setLocationOnClickListener(location3, name3, address3);
-
-        ImageButton imageButton = findViewById(R.id.ibutton_next);
-        imageButton.setOnClickListener(new View.OnClickListener() {
+        back = findViewById(R.id.ibutton_next);
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Đưa logic xử lý khi nhấn vào imageButton ở đây (nếu có)
-                location.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if(location.isSelected() == true) {
-//                    // Lấy tham chiếu đến node 'user_choice'
-//                    DatabaseReference ref = dataBase.getReference("user_choice");
-//                    // Thêm mới hoặc cập nhật dữ liệu
-//                    ref.child("booking_sel_employee").setValue("Employee Name");
-//                    ref.child("booking_sel_loc").setValue("Location Name");
-//                    ref.child("booking_sel_schedule").setValue("Schedule Time");
-
-                            //setup intent
-                            Intent intent = new Intent(Booking_sel_locale.this, Booking_sel_schedule.class);
-                            startActivity(intent);
-
-
-                        }
-                    }
-                });
+                // Thực hiện hành động khi nhấn vào imageButton ở đây
+                Intent intent = new Intent(Booking_sel_locale.this, ShoppingActivity.class);
+                startActivity(intent);
+                finish(); // Đóng activity hiện tại nếu cần
             }
         });
+        ImageButton imageButton = findViewById(R.id.ibutton_next);
+
     }
 }

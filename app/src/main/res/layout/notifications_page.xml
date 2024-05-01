@@ -37,6 +37,13 @@
         android:layout_gravity="center"
         android:backgroundTint="#FF0000"
         android:text="Delete your schedule" />
+    <Button
+        android:id="@+id/btn_change_infobk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Change your schedule" />
+
 
 
 </LinearLayout>

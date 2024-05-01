@@ -2,6 +2,7 @@ package com.example.salon.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,9 +17,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.salon.Adapter.BestProductsAdapter;
 import com.example.salon.Adapter.CategoryAdapter;
 import com.example.salon.Domain.Category;
+import com.example.salon.Helper.NavigationManager;
 import com.example.salon.R;
 
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,17 +33,42 @@ import com.example.salon.Domain.Price;
 import java.util.ArrayList;
 
 public class ShoppingActivity extends BaseActivity{
+    BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shopping_page);
-
-
-
-
+        bottomNavigationView = findViewById(R.id.nav_shopping_1);
+        bottomNavigationView.setSelectedItemId(R.id.action_home);
         initBestProduct();
         initCategory();
         setVariable();
+        BottomNavigationView nav_shopping_1 = findViewById(R.id.nav_shopping_1);
+        nav_shopping_1.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+
+                if (id == R.id.action_noti) {
+                    // Xử lý khi click vào Notifications
+                    NavigationManager.navigateToNotifications(ShoppingActivity.this);
+                    // Không gọi finish() ở đây nếu bạn không muốn kết thúc Activity hiện tại
+
+                } else if (id == R.id.action_cart) {
+                    // Xử lý khi click vào Cart
+                    NavigationManager.navigateToCart(ShoppingActivity.this);
+                } else if (id == R.id.action_acc) {
+                    NavigationManager.navigateToProfile(ShoppingActivity.this);
+                    // Xử lý khi click vào Settings
+                }
+                else if (id == R.id.action_his) {
+                    NavigationManager.navigateToHistory(ShoppingActivity.this);
+                    // Xử lý khi click vào Settings
+                }
+
+                return true;
+            }
+        });
     }
 
     private void setVariable() {
@@ -64,7 +92,7 @@ public class ShoppingActivity extends BaseActivity{
         });
         cartBtn.setOnClickListener(v -> startActivity(new Intent(ShoppingActivity.this, CartActivity.class)));
 
-        backBtn.setOnClickListener(v -> startActivity(new Intent(ShoppingActivity.this, HomeActivity.class)));
+        //backBtn.setOnClickListener(v -> startActivity(new Intent(ShoppingActivity.this, HomeActivity.class)));
 
     }
         private void initBestProduct() {

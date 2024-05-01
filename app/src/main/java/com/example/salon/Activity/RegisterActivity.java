@@ -75,8 +75,8 @@ public class RegisterActivity extends AppCompatActivity {
                                     progressBar.setVisibility(View.GONE);
                                     if (task.isSuccessful()) {
                                         // Sign in success, update UI with the signed-in user's information
-                                        FirebaseUser user = User.mAuth.getCurrentUser();
-                                        Intent intent =new Intent(getApplicationContext(), LoginActivity.class);
+                                        FirebaseAuth.getInstance().getCurrentUser();
+                                        Intent intent =new Intent(getApplicationContext(), ShoppingActivity.class);
                                         startActivity(intent);
                                         finish();
                                     } else {

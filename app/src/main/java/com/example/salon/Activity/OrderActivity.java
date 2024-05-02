@@ -100,7 +100,7 @@ public class OrderActivity extends  BaseActivity{
 
 
                     Intent intent = new Intent();
-                    intent.setClass(getApplicationContext(), HomeActivity.class);
+                    intent.setClass(getApplicationContext(), ShoppingActivity.class);
 
                     startActivity(intent);
                 } else {
